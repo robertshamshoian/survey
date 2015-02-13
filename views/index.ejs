@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://localhost:6789/socket.io/socket.io.js"></script>
+
+    <script>
+	  var socket = io.connect('http://localhost:6789');
+
+	  var name = prompt('What is your name?');
+	  socket.emit('new_name', {name: name} );
+	</script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to the <%= title %></p>
+
+    <form action="/form_submit" method="post">
+ 		Name: <input type="text" name="name"><br>
+ 		Dojo Location: 
+ 		<select name = "location">
+			<option >Mt View</option>
+			<option >Seattle</option>
+			<option >Los Angeles</option>
+			<option >New York</option>
+		</select><br>
+		Favorite Language: 
+		<select name = "language">
+			<option>html</option>
+			<option>css</option>
+			<option>ruby</option>
+			<option>php</option>
+			<option>javascript</option>
+		</select><br>
+		Comments: <br>
+		<textarea name= "comment" rows="4" cols="50"></textarea><br>
+ 		 <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
